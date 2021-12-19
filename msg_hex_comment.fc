@@ -8,8 +8,7 @@ slice str2bin(slice hex) method_id {
 
   int size = 4;
 
-  int i = 0;
-  while (i < len) {
+  while (len) {
     int char = hex~load_uint(8);
 
     if (char >= 48) & (char <= 57) { ;; 0-9
@@ -19,7 +18,7 @@ slice str2bin(slice hex) method_id {
       b~store_uint(char - 55, size);
     }
 
-    i += 1;
+    len -= 1;
   }
 
   return b.end_cell().begin_parse();
